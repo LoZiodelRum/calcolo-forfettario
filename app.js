@@ -1,6 +1,6 @@
 const STORAGE_KEY = "forfettario_invoices_v1";
 
-const € = n => new Intl.NumberFormat("it-IT", {
+const euro = n => new Intl.NumberFormat("it-IT", {
   style: "currency", currency: "EUR"
 }).format(Number(n || 0));
 
@@ -31,12 +31,12 @@ function currentCalc(){
 
 function updateCurrent(){
   const c = currentCalc();
-  document.getElementById("taxable").textContent = €(c.taxable);
-  document.getElementById("inps").textContent = €(c.inps);
-  document.getElementById("tax").textContent = €(c.tax);
-  document.getElementById("net").textContent = €(c.net);
-  document.getElementById("quota22").textContent = €(c.quota22);
-  document.getElementById("netPlus").textContent = €(c.netPlus);
+  document.getElementById("taxable").textContent = euro(c.taxable);
+  document.getElementById("inps").textContent = euro(c.inps);
+  document.getElementById("tax").textContent = euro(c.tax);
+  document.getElementById("net").textContent = euro(c.net);
+  document.getElementById("quota22").textContent = euro(c.quota22);
+  document.getElementById("netPlus").textContent = euro(c.netPlus);
 }
 
 function getInvoices(){
@@ -58,11 +58,11 @@ function updateTotals(){
     return a;
   }, {gross:0,inps:0,tax:0,netPlus:0});
 
-  document.getElementById("totalGross").textContent = €(totals.gross);
-  document.getElementById("totalInps").textContent = €(totals.inps);
-  document.getElementById("totalTax").textContent = €(totals.tax);
-  document.getElementById("totalReserve").textContent = €(totals.inps + totals.tax);
-  document.getElementById("totalNet").textContent = €(totals.netPlus);
+  document.getElementById("totalGross").textContent = euro(totals.gross);
+  document.getElementById("totalInps").textContent = euro(totals.inps);
+  document.getElementById("totalTax").textContent = euro(totals.tax);
+  document.getElementById("totalReserve").textContent = euro(totals.inps + totals.tax);
+  document.getElementById("totalNet").textContent = euro(totals.netPlus);
 }
 
 function renderInvoices(){
@@ -77,13 +77,13 @@ function renderInvoices(){
     el.className = "invoice-item";
     el.innerHTML = `
       <div class="invoice-top">
-        <strong>${€(inv.gross)}</strong>
+        <strong>${euro(inv.gross)}</strong>
         <span>${new Date(inv.date).toLocaleDateString("it-IT")}</span>
       </div>
       <div class="invoice-desc">${inv.description || "Nessuna descrizione"}</div>
       <div class="invoice-meta">
-        Imponibile: ${€(inv.taxable)} · INPS: ${€(inv.inps)} · Imposta: ${€(inv.tax)}<br>
-        Netto + quota 22%: <strong>${€(inv.netPlus)}</strong>
+        Imponibile: ${euro(inv.taxable)} · INPS: ${euro(inv.inps)} · Imposta: ${euro(inv.tax)}<br>
+        Netto + quota 22%: <strong>${euro(inv.netPlus)}</strong>
       </div>
       <div class="invoice-actions">
         <button data-id="${inv.id}">Elimina</button>
