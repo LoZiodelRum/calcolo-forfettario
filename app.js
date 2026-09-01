@@ -1,9 +1,11 @@
 const STORAGE_KEY = "forfettario_invoices_v1";
 
-const euro = n => new Intl.NumberFormat("it-IT", {
-  style: "currency", currency: "EUR"
-}).format(Number(n || 0));
-
+function euro(n) {
+  return Number(n || 0).toLocaleString("it-IT", {
+    style: "currency",
+    currency: "EUR"
+  });
+}
 const amountEl = document.getElementById("invoiceAmount");
 const descEl = document.getElementById("invoiceDescription");
 
