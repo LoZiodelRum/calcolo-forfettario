@@ -1,0 +1,9 @@
+{
+  "name": "Calcolo Regime Forfettario",
+  "short_name": "Forfettario",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#173b6f",
+  "icons": []
+}
